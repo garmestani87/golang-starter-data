@@ -1,0 +1,15 @@
+application:
+  name: go-starter-data
+server:
+  port: ":30081"
+cache:
+  redis:
+    uri: 172.18.0.2:6379
+    password: ""
+    db: 0
+    read_timeout: 3
+    writetimeout: 5
+    pool_size: 20
+    pool_timeout: 4
+    idle_timeout: 5
+    idle_check_frequency: 1
