@@ -12,6 +12,7 @@ type Config struct {
 	Application
 	Server
 	Cache
+	Data
 }
 
 type Application struct {
@@ -22,25 +23,40 @@ type Server struct {
 	Port string
 }
 
-type Cache struct{
+type Cache struct {
 	Redis
 }
 
-type Redis struct{
-	Uri string
-    Password string
-    Db int
-    ReadTimeout int
-    WriteTimeout int
-    PoolSize int
-    PoolTimeout int
-    IdleTimeout int
-    IdleCheckFrequency int
+type Redis struct {
+	Uri                string
+	Password           string
+	Db                 int
+	ReadTimeout        int
+	WriteTimeout       int
+	PoolSize           int
+	PoolTimeout        int
+	IdleTimeout        int
+	IdleCheckFrequency int
+}
 
+type Data struct {
+	Postgres
+}
+
+type Postgres struct {
+	Host            string
+	Port            int
+	User            string
+	Password        string
+	DbName          string
+	SslMode         string
+	MaxIdleConns    int
+	MaxOpenConns    int
+	ConnMaxLifetime int
 }
 
 func GetConfig() *Config {
-	
+
 	configPath := getConfigPath(os.Getenv("APP_ENV"))
 	v, err := loadConfig(configPath, "yml")
 	if err != nil {

@@ -27,3 +27,11 @@ func InitRedis(cfg *config.Config) {
 func GetClient() *redis.Client {
 	return rdc
 }
+
+func CloseRedis() {
+	err := rdc.Close()
+	if err != nil {
+		panic(err)
+		return
+	}
+}

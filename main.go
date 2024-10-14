@@ -3,6 +3,7 @@ package main
 import (
 	"golang-starter-data/cache"
 	"golang-starter-data/config"
+	"golang-starter-data/db"
 	"golang-starter-data/server"
 	"os"
 )
@@ -10,10 +11,23 @@ import (
 func main() {
 	setEnv()
 	cfg := config.GetConfig()
-	cache.InitRedis(cfg)
-	server.Start(cfg)
+	initRedis(cfg)
+	initPostgres(cfg)
+	server.Start()
 }
 
-func setEnv(){
+func setEnv() {
 	os.Setenv("APP_ENV", "dev")
+}
+
+func initRedis(cfg *config.Config) {
+	// defer cache.CloseRedis()
+
+	cache.InitRedis(cfg)
+}
+
+func initPostgres(cfg *config.Config) {
+	// defer db.CloseDatabase()
+
+	db.InitPostgres(cfg)
 }

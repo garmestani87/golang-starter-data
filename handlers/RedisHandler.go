@@ -15,7 +15,7 @@ func Put(ctx *gin.Context) {
 
 	res := cache.GetClient().Set(key, value, 20*time.Second)
 	if res.Err() != nil {
-		ctx.AbortWithError(http.StatusInternalServerError, res.Err())
+		_ = ctx.AbortWithError(http.StatusInternalServerError, res.Err())
 		return
 	}
 
@@ -28,7 +28,7 @@ func Get(ctx *gin.Context) {
 	var val *redis.StringCmd
 
 	if val = cache.GetClient().Get(key); val.Err() != nil {
-		ctx.AbortWithError(http.StatusInternalServerError, val.Err())
+		_ = ctx.AbortWithError(http.StatusInternalServerError, val.Err())
 		return
 	}
 
