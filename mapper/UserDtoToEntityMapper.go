@@ -12,3 +12,11 @@ func MapToEntity(dto *dto.UserDto) (e *entity.User) {
 	e.Lastname = dto.Lastname
 	return
 }
+
+func MapToDto(e *entity.User) (d *dto.UserDto) {
+	d = dto.NewUserDto()
+	d.Name = e.Name
+	d.Age = e.Age
+	d.Lastname = e.Lastname
+	return
+}

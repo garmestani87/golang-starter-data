@@ -9,6 +9,16 @@ import (
 	"github.com/go-redis/redis"
 )
 
+
+// @Summary put key and value
+// @Description put key and value
+// @Accept  json
+// @Produce  json
+// @Param   key     path    string     true     "key"
+// @Param   value     path    string     true     "value"
+// @Success 200 {object} string
+// @Failure 400 {object} string
+// @Router /api/v1/redis/{key}/{value} [put]
 func Put(ctx *gin.Context) {
 	key := ctx.Param("key")
 	value := ctx.Param("value")
@@ -22,6 +32,14 @@ func Put(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, "key/value put in to redis!")
 }
 
+// @Summary Show value for key
+// @Description get value by key
+// @Accept  json
+// @Produce  json
+// @Param   key     path    string     true     "key"
+// @Success 200 {object} string
+// @Failure 400 {object} string
+// @Router /api/v1/redis/{key} [get]
 func Get(ctx *gin.Context) {
 	key := ctx.Param("key")
 

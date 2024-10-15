@@ -18,6 +18,7 @@ func Start() {
 		{
 			routers.RouteToRedis(v1.Group("/redis"))
 			routers.RouteUser(v1.Group("/user"))
+			routers.RouteSwagger(v1.Group("/swagger"))
 		}
 
 	}
