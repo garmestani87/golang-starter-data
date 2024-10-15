@@ -33,7 +33,7 @@ func SaveUser(ctx *gin.Context) {
 	res := db.GetDatabase().Create(mapper.MapToEntity(userDto))
 
 	if res.Error != nil {
-		ex := common.NewExceptionModel("Error occurred when inserting user !", common.EXCEPTION, err.Error())
+		ex := common.NewExceptionModel("Error occurred when inserting user !", common.EXCEPTION, res.Error.Error())
 		ctx.AbortWithStatusJSON(http.StatusInternalServerError, &ex)
 		return
 	}
