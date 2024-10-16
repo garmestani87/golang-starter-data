@@ -2,6 +2,7 @@ package server
 
 import (
 	"golang-starter-data/config"
+	"golang-starter-data/middlewares"
 	"golang-starter-data/routers"
 	"os"
 
@@ -9,8 +10,10 @@ import (
 )
 
 func Start() {
+	cfg := config.GetConfig()
+	
 	r := gin.New()
-	r.Use(gin.Logger(), gin.Recovery())
+	r.Use(middlewares.Logger(cfg), gin.Recovery())
 
 	api := r.Group("/api")
 	{
@@ -24,7 +27,6 @@ func Start() {
 	}
 
 	os.Setenv("APP_ENV", "dev")
-	cfg := config.GetConfig()
 
 	err := r.Run(cfg.Server.Port)
 	if err != nil {

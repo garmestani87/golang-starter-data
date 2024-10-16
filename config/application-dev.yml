@@ -16,11 +16,13 @@ cache:
 data:
   postgres:
     host: 172.18.0.3
-    port: 5432
+    port: 5431
     user: postgres
     password: password
     dbName: user_db
     sslMode: disable
     maxIdleConns: 5
     maxOpenConns: 20
-    connMaxLifetime: 5    
+    connMaxLifetime: 5
+logger:
+  appName: starter-data  

@@ -13,6 +13,7 @@ type Config struct {
 	Server
 	Cache
 	Data
+	Logger
 }
 
 type Application struct {
@@ -53,6 +54,10 @@ type Postgres struct {
 	MaxIdleConns    int
 	MaxOpenConns    int
 	ConnMaxLifetime int
+}
+
+type Logger struct{
+	AppName string
 }
 
 func GetConfig() *Config {
