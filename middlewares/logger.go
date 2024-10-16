@@ -17,14 +17,14 @@ func Logger(cfg *config.Config) gin.HandlerFunc {
 		status := ctx.Writer.Status()
 
 		console := loggers.NewConsoleLogger()
-		console.Info("CLIENT_IP = ", ctx.ClientIP(),
-			", APP_NAME = ", cfg.Logger.AppName,
-			", TIME = ", t.Format(time.RFC1123),
-			", METHOD = ", ctx.Request.Method,
-			", URI = ", ctx.Request.RequestURI,
-			", STATUS = ", status,
-			", LATENCY = ", latency,
-			", USER_AGENT = ", ctx.Request.UserAgent(),
+		console.Info("CLIENT_IP=", ctx.ClientIP(),
+			", APP_NAME=", cfg.Logger.AppName,
+			", TIME=", t.Format(time.RFC1123),
+			", METHOD=", ctx.Request.Method,
+			", URI=", ctx.Request.RequestURI,
+			", STATUS=", status,
+			", LATENCY=", latency,
+			", USER_AGENT=", ctx.Request.UserAgent(),
 		)
 	}
 }
